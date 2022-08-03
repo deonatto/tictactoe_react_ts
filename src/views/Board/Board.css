@@ -1,0 +1,26 @@
+.board-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    width: 400px;
+    height: 400px;
+    background-color: #bdf7e4;
+    display: flex;
+    font-size: 35px;
+}
+.column{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 425px) {
+    .board-container{
+      width: 200px;
+      height: 200px;
+      font-size: 25px;
+    }
+}
