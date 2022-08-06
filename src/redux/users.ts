@@ -1,9 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import {User} from '../types/Types';
 
-interface User {
-  name: string;
-  wins: number;
-}
 interface UsersState {
   users: User[];
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { SquareState } from "./Types";
+import { SquareState } from "../../types/Types";
 import './Square.css';
 
 interface SquareProps {

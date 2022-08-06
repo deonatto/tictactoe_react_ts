@@ -1,25 +1,25 @@
 import { useEffect, useState } from "react";
-import { SquareState } from "../components/Square/Types";
+import { SquareState } from "../types/Types";
+import {useAppDispatch} from '../redux/hooks';
+import { usersActions } from '../redux/users';
+import { Result } from "../types/Types";
 
-interface HookValues {
-  result: { winner: string; state: string };
-  player: string;
-}
-
-export default function useTurn(board: SquareState[]): HookValues {
-  const [result, setResult] = useState({ winner: "none", state: "none" });
-  //winning patterns
-  const patterns = [
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 4, 8],
-    [2, 4, 6],
-  ];
+export default function useTurn(board: SquareState[]): Result {
+  const dispatch = useAppDispatch();
+  const [result, setResult] = useState<Result>({ winner: "", state: "" });
   useEffect(() => {
+    
+    //winning patterns
+    const patterns = [
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 4, 8],
+      [2, 4, 6],
+    ];
     //function to check if someone win
     const checkWinner = () => {
       let count = 0;
@@ -36,7 +36,8 @@ export default function useTurn(board: SquareState[]): HookValues {
           secondSquare !== "" &&
           thirdSquare !== ""
         ) {
-          setResult({ winner: player, state: "Winner" });
+          setResult({ winner: board[pattern[0]].value, state: "Winner" });
+          dispatch(usersActions.addWin(board[pattern[0]].value));
           winner = true;
         }
       });
@@ -50,21 +51,12 @@ export default function useTurn(board: SquareState[]): HookValues {
         });
         //check if it is a tie
         if (count === 9) {
-          setResult({ winner: "none", state: "Tie" });
+          setResult({ winner: "", state: "Tie" });
         }
       }
     };
     checkWinner();
-    //function to alternate players
-    const changePlayer = () => {
-      if (player === "X") {
-        setPlayer("O");
-      } else {
-        setPlayer("X");
-      }
-    };
-    changePlayer();
-  }, [board]);
+  }, [board, dispatch]);
 
-  return { result };
+  return result ;
 }
