@@ -18,7 +18,7 @@ const Message: React.FC<MessageProps> = ({ result, restartGame }) => {
 
   //end game and send back to login page
   const endGame = () => {
-    dispatch(usersActions.endGame());
+    dispatch(usersActions.clearState());
     history("/");
   };
   return (

@@ -30,7 +30,7 @@ const usersSlice = createSlice({
           break;
       }
     },
-    endGame(state) {
+    clearState(state) {
       state.users = [];
     },
   },

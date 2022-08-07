@@ -1,43 +1,71 @@
-.form-container{
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    margin: auto;
-    width: 250px;
-    height: 200px;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0px 5px;
-    box-shadow: 1px 1px 5px black;
-    background-color: whitesmoke;
+.form-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  width: 250px;
+  height: 200px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 5px;
+  box-shadow: 1px 1px 5px black;
+  background-color: whitesmoke;
 }
-.form-component{
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.form-component {
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-.player-input{
-    border: none;
-    border-bottom: 1.5px solid;
-    border-radius: 5px;
-    outline: none;
-    margin: 5px 0px 0px 0px;
-    background-color: inherit;
-    padding-left: 5px;
+.player-input {
+  border: none;
+  border-bottom: 1.5px solid;
+  border-radius: 5px;
+  outline: none;
+  margin: 5px 0px 0px 0px;
+  background-color: inherit;
+  padding-left: 5px;
 }
-.login-btn-container{
-    flex: 1;
+
+.login-btn {
+  width: 100%;
+  height: 20%;
+  background-color: rgb(160, 238, 160);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
-.login-btn{
-    width: 100%;
-    height: 30px;
-    background-color: rgb(160, 238, 160);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+
+@media screen and (min-width: 1024px) {
+    .form-container {
+      width: 300px;
+      height: 300px;
+      padding: 20px 15px;
+      font-size: 18px;
+    }
+    .player-input {
+      font-size: 15px;
+    }
+    .login-btn {
+      font-size: 18px;
+    }
+  }
+
+@media screen and (min-width: 2560px) {
+  .form-container {
+    width: 350px;
+    height: 350px;
+    padding: 20px 15px;
+    font-size: 20px;
+  }
+  .player-input {
+    font-size: 17px;
+  }
+  .login-btn {
+    font-size: 20px;
+  }
 }

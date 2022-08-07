@@ -3,17 +3,22 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Wrapper from "../../components/Wrapper/Wrapper";
 import "./Login.css";
-import { useDispatch } from "react-redux";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { usersActions } from "../../redux/users";
 
 const Login: React.FC = () => {
-  const [playerName1, setPlayerName1] = useState('');
-  const [playerName2, setPlayerName2] = useState('');
-  const dispatch = useDispatch();
+  const [playerName1, setPlayerName1] = useState("");
+  const [playerName2, setPlayerName2] = useState("");
+  const dispatch = useAppDispatch();
   const history = useNavigate();
+  const users = useAppSelector((state) => state.users);
 
   const loginHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    // reset state if user go back to login page whitout ending game
+    if (users.length > 0) {
+      dispatch(usersActions.clearState());
+    }
     //dispatch action to store users on users state
     dispatch(usersActions.addPlayer(playerName1));
     dispatch(usersActions.addPlayer(playerName2));
@@ -45,11 +50,9 @@ const Login: React.FC = () => {
             placeholder="Insert Player O name"
           />
         </div>
-        <div className="login-btn-container">
-          <button className="login-btn" type="submit">
-            Start Game
-          </button>
-        </div>
+        <button className="login-btn" type="submit">
+          Start Game
+        </button>
       </form>
     </Wrapper>
   );

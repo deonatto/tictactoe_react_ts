@@ -1,7 +1,7 @@
 export  interface SquareState {
   value: string,
   number: number,
-  checked: boolean,
+  checked: boolean
 }
 export interface Result {
   winner: string,
@@ -10,5 +10,5 @@ export interface Result {
 
 export interface User{
   name: string,
-  wins: number,
+  wins: number
 }

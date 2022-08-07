@@ -66,67 +66,68 @@ const Board: React.FC = () => {
 
   return (
     <Wrapper>
-      {result.state !== "" && (
+      {result.state !== "" ? (
         <Message result={result} restartGame={restartGame} />
+      ) : (
+        <div className="board-container">
+          <div className="board-wrapper">
+            <div className="column">
+              <Square
+                board={board[0]}
+                squareHandler={squareHandler}
+                changePlayer={changePlayer}
+              />
+              <Square
+                board={board[3]}
+                squareHandler={squareHandler}
+                changePlayer={changePlayer}
+              />
+              <Square
+                board={board[6]}
+                squareHandler={squareHandler}
+                changePlayer={changePlayer}
+              />
+            </div>
+            <div className="column">
+              <Square
+                board={board[1]}
+                squareHandler={squareHandler}
+                changePlayer={changePlayer}
+              />
+              <Square
+                board={board[4]}
+                squareHandler={squareHandler}
+                changePlayer={changePlayer}
+              />
+              <Square
+                board={board[7]}
+                squareHandler={squareHandler}
+                changePlayer={changePlayer}
+              />
+            </div>
+            <div className="column">
+              <Square
+                board={board[2]}
+                squareHandler={squareHandler}
+                changePlayer={changePlayer}
+              />
+              <Square
+                board={board[5]}
+                squareHandler={squareHandler}
+                changePlayer={changePlayer}
+              />
+              <Square
+                board={board[8]}
+                squareHandler={squareHandler}
+                changePlayer={changePlayer}
+              />
+            </div>
+          </div>
+          <div className="info-container">
+            <p>Current Player: {player}</p>
+          </div>
+        </div>
       )}
-      <div className="board-container">
-        <div className="board-wrapper">
-          <div className="column">
-            <Square
-              board={board[0]}
-              squareHandler={squareHandler}
-              changePlayer={changePlayer}
-            />
-            <Square
-              board={board[3]}
-              squareHandler={squareHandler}
-              changePlayer={changePlayer}
-            />
-            <Square
-              board={board[6]}
-              squareHandler={squareHandler}
-              changePlayer={changePlayer}
-            />
-          </div>
-          <div className="column">
-            <Square
-              board={board[1]}
-              squareHandler={squareHandler}
-              changePlayer={changePlayer}
-            />
-            <Square
-              board={board[4]}
-              squareHandler={squareHandler}
-              changePlayer={changePlayer}
-            />
-            <Square
-              board={board[7]}
-              squareHandler={squareHandler}
-              changePlayer={changePlayer}
-            />
-          </div>
-          <div className="column">
-            <Square
-              board={board[2]}
-              squareHandler={squareHandler}
-              changePlayer={changePlayer}
-            />
-            <Square
-              board={board[5]}
-              squareHandler={squareHandler}
-              changePlayer={changePlayer}
-            />
-            <Square
-              board={board[8]}
-              squareHandler={squareHandler}
-              changePlayer={changePlayer}
-            />
-          </div>
-        </div>
-        <div className="info-container">
-          <p>Current Player: {player}</p>
-        </div>
-      </div>
     </Wrapper>
   );
 };
