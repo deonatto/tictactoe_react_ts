@@ -2,9 +2,14 @@ import { useEffect, useState } from "react";
 import { SquareState } from "../types/Types";
 import {useAppDispatch} from '../redux/hooks';
 import { usersActions } from '../redux/users';
-import { Result } from "../types/Types";
+import { Result } from "../types/Types"
 
-export default function useTurn(board: SquareState[]): Result {
+interface HookReturn{
+  result : Result,
+  setResult: (val:Result)=> void
+}
+
+export default function useTurn(board: SquareState[]): HookReturn {
   const dispatch = useAppDispatch();
   const [result, setResult] = useState<Result>({ winner: "", state: "" });
   useEffect(() => {
@@ -58,5 +63,5 @@ export default function useTurn(board: SquareState[]): Result {
     checkWinner();
   }, [board, dispatch]);
 
-  return result ;
+  return {result, setResult} ;
 }

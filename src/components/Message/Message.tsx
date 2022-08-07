@@ -12,7 +12,7 @@ interface MessageProps {
 
 const Message: React.FC<MessageProps> = ({ result, restartGame }) => {
   //get users state
-  const users = useAppSelector((state) => state.users.users);
+  const users = useAppSelector((state) => state.users);
   const dispatch = useAppDispatch();
   const history = useNavigate();
 

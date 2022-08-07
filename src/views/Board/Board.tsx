@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { useState } from "react";
 import Wrapper from "../../components/Wrapper/Wrapper";
 import Square from "../../components/Square/Square";
 import Message from "../../components/Message/Message";
@@ -7,7 +7,7 @@ import { SquareState } from "../../types/Types";
 import useTurn from "../../hooks/useTurn";
 
 const Board: React.FC = () => {
-  const [player, setPlayer] = useState("");
+  const [player, setPlayer] = useState("X");
   //board state
   const [board, setBoard] = useState<SquareState[]>([
     { value: "", number: 0, checked: false },
@@ -20,7 +20,7 @@ const Board: React.FC = () => {
     { value: "", number: 7, checked: false },
     { value: "", number: 8, checked: false },
   ]);
-  const result  = useTurn(board);
+  const { result, setResult } = useTurn(board);
 
   //function to alternate players
   const changePlayer = () => {
@@ -61,7 +61,7 @@ const Board: React.FC = () => {
       { value: "", number: 7, checked: false },
       { value: "", number: 8, checked: false },
     ]);
-    setPlayer("O");
+    setResult({ winner: "", state: "" });
   };
 
   return (
@@ -70,56 +70,61 @@ const Board: React.FC = () => {
         <Message result={result} restartGame={restartGame} />
       )}
       <div className="board-container">
-        <div className="column">
-          <Square
-            board={board[0]}
-            squareHandler={squareHandler}
-            changePlayer={changePlayer}
-          />
-          <Square
-            board={board[3]}
-            squareHandler={squareHandler}
-            changePlayer={changePlayer}
-          />
-          <Square
-            board={board[6]}
-            squareHandler={squareHandler}
-            changePlayer={changePlayer}
-          />
+        <div className="board-wrapper">
+          <div className="column">
+            <Square
+              board={board[0]}
+              squareHandler={squareHandler}
+              changePlayer={changePlayer}
+            />
+            <Square
+              board={board[3]}
+              squareHandler={squareHandler}
+              changePlayer={changePlayer}
+            />
+            <Square
+              board={board[6]}
+              squareHandler={squareHandler}
+              changePlayer={changePlayer}
+            />
+          </div>
+          <div className="column">
+            <Square
+              board={board[1]}
+              squareHandler={squareHandler}
+              changePlayer={changePlayer}
+            />
+            <Square
+              board={board[4]}
+              squareHandler={squareHandler}
+              changePlayer={changePlayer}
+            />
+            <Square
+              board={board[7]}
+              squareHandler={squareHandler}
+              changePlayer={changePlayer}
+            />
+          </div>
+          <div className="column">
+            <Square
+              board={board[2]}
+              squareHandler={squareHandler}
+              changePlayer={changePlayer}
+            />
+            <Square
+              board={board[5]}
+              squareHandler={squareHandler}
+              changePlayer={changePlayer}
+            />
+            <Square
+              board={board[8]}
+              squareHandler={squareHandler}
+              changePlayer={changePlayer}
+            />
+          </div>
         </div>
-        <div className="column">
-          <Square
-            board={board[1]}
-            squareHandler={squareHandler}
-            changePlayer={changePlayer}
-          />
-          <Square
-            board={board[4]}
-            squareHandler={squareHandler}
-            changePlayer={changePlayer}
-          />
-          <Square
-            board={board[7]}
-            squareHandler={squareHandler}
-            changePlayer={changePlayer}
-          />
-        </div>
-        <div className="column">
-          <Square
-            board={board[2]}
-            squareHandler={squareHandler}
-            changePlayer={changePlayer}
-          />
-          <Square
-            board={board[5]}
-            squareHandler={squareHandler}
-            changePlayer={changePlayer}
-          />
-          <Square
-            board={board[8]}
-            squareHandler={squareHandler}
-            changePlayer={changePlayer}
-          />
+        <div className="info-container">
+          <p>Current Player: {player}</p>
         </div>
       </div>
     </Wrapper>

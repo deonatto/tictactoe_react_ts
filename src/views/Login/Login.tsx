@@ -24,25 +24,25 @@ const Login: React.FC = () => {
     <Wrapper>
       <form onSubmit={loginHandler} className="form-container">
         <div className="form-component">
-          <label htmlFor="player1">Player 1</label>
+          <label htmlFor="player1">Player X</label>
           <input
             type="text"
             className="player-input"
             id="player1"
             onChange={(e) => setPlayerName1(e.target.value)}
             required
-            placeholder="Insert Player 1 name"
+            placeholder="Insert Player X name"
           />
         </div>
         <div className="form-component">
-          <label htmlFor="player2">Player 2</label>
+          <label htmlFor="player2">Player O</label>
           <input
             type="text"
             className="player-input"
             id="player2"
             onChange={(e) => setPlayerName2(e.target.value)}
             required
-            placeholder="Insert Player 2 name"
+            placeholder="Insert Player O name"
           />
         </div>
         <div className="login-btn-container">
